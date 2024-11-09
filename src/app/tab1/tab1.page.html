@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Venta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let articulo of articulos">
+      <ion-card-header>
+        <ion-card-title>{{ articulo.nombre }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div style="display: flex; align-items: center;">
+          <div style="flex: 1;">
+            <p>{{ articulo.descripcion }}</p>
+            <p><strong>Precio:</strong> ${{ articulo.precio }}</p>
+          </div>
+          <div style="flex: 1; display: flex; align-items: center;">
+            <ion-item>
+              <ion-input [(ngModel)]="articulo.cantidad" type="number" min="1"></ion-input>
+            </ion-item>
+            <ion-button (click)="agregarAlCarrito(articulo)" expand="full">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

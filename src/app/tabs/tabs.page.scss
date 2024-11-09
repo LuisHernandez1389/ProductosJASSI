@@ -1,0 +1,15 @@
+.inline-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    width: 100%;
+  }
+  
+  .ion-list-right {
+    flex-grow: 1; /* Asegura que el ion-list ocupe el máximo espacio disponible */
+    display: flex;
+    justify-content: flex-end; /* Alinea el ion-select a la derecha */
+  }
+  .name{
+    padding-left: 4px !important;
+  }

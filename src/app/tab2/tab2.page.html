@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de artículos en el carrito -->
+  <ion-list>
+    <ion-segment [(ngModel)]="selectedTab">
+      <ion-segment-button value="tab1">
+        <ion-label>Carrito</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tab2">
+        <ion-label>Mercancia</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- Contenido de Tab 1 - Carrito -->
+    <div *ngIf="selectedTab === 'tab1'">
+      <ion-item *ngFor="let item of carrito">
+        <ion-label>
+          <h2>{{ item.nombre }}</h2>
+          <div style="display: flex; align-items: center;">
+            <p>Cantidad: {{ item.cantidad }}</p>
+          </div>
+          <p>Precio Total: ${{ item.precio * item.cantidad }}</p>
+        </ion-label>
+        <ion-button color="danger" (click)="eliminarDelCarrito(item)">Eliminar</ion-button>
+      </ion-item>
+    </div>
+
+
+    <!-- Contenido de Tab 2 - Mercancia -->
+    <div *ngIf="selectedTab === 'tab2'">
+      <div *ngFor="let id of getMercanciaKeys()">
+        <p>{{ articulos[id].nombre }}: {{ mercancia[id].unidades }} unidades</p>
+      </div>
+      <!-- Muestra el total -->
+      <p>Total: {{ calculateTotal() | currency }}</p>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" color="primary" (click)="guardarCarritoEnDB()">Guardar Carrito</ion-button>
+
+  </ion-toolbar>
+</ion-footer>

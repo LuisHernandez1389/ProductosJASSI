@@ -1,0 +1,7 @@
+{
+  "name": "especiasm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
